@@ -1,4 +1,4 @@
-package com.wirtec.rparayno.examify.ClassActivity;
+package com.wirtec.rparayno.examify.ClassFragment;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.wirtec.rparayno.examify.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by rparayno on 11/03/2018.

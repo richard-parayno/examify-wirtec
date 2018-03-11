@@ -16,9 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ClassActivity.ClassActivity" />
-        <activity android:name=".FeedActivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

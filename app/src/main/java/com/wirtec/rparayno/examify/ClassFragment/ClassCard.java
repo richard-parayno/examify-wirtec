@@ -1,4 +1,4 @@
-package com.wirtec.rparayno.examify.ClassActivity;
+package com.wirtec.rparayno.examify.ClassFragment;
 
 /**
  * Created by rparayno on 09/03/2018.

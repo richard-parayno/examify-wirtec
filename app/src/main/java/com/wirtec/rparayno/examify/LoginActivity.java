@@ -9,8 +9,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
-
 public class LoginActivity extends AppCompatActivity{
 
     private EditText username;
@@ -36,7 +34,7 @@ public class LoginActivity extends AppCompatActivity{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classIntent = new Intent(LoginActivity.this, ClassActivity.class);
+                Intent classIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(classIntent);
             }
         });

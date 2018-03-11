@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
     <item
-        android:id="@+id/action_favorites"
+        android:id="@+id/nav_feed"
         android:enabled="true"
-        android:title="Feed"
-        app:showAsAction="ifRoom" />
+        android:title="Feed" />
     <item
-        android:id="@+id/action_schedules"
+        android:id="@+id/nav_classes"
         android:enabled="true"
-        android:title="Classes"
-        app:showAsAction="ifRoom" />
+        android:title="Classes" />
     <item
-        android:id="@+id/action_music"
+        android:id="@+id/nav_profile"
         android:enabled="true"
-        android:title="Profile"
-        app:showAsAction="ifRoom" />
+        android:title="Profile" />
 </menu>

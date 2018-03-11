@@ -1,4 +1,4 @@
-package com.wirtec.rparayno.examify.ClassActivity;
+package com.wirtec.rparayno.examify.ClassFragment;
 
 import android.view.View;
 
