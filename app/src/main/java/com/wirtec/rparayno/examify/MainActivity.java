@@ -5,6 +5,7 @@ package com.wirtec.rparayno.examify;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -27,12 +28,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         removeTitleBar();
-
         initResources();
-
-
     }
 
     private void removeTitleBar() {
@@ -65,6 +62,9 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         });
+
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
 
         loadFragment(new ClassFragment());
     }
