@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wirtec.rparayno.examify.R;
+import com.wirtec.rparayno.examify.ViewClickListener;
 
 import java.util.ArrayList;
 
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 
 public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHolder> {
     private ArrayList<ClassCard> classList;
-    private ClassListener listener;
+    private ViewClickListener listener;
 
-    public ClassAdapter(ArrayList<ClassCard> classList, ClassListener listener) {
+    public ClassAdapter(ArrayList<ClassCard> classList, ViewClickListener listener) {
         this.classList = classList;
         this.listener = listener;
     }

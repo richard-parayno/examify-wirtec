@@ -1,4 +1,4 @@
-package com.wirtec.rparayno.examify.ClassFragment;
+package com.wirtec.rparayno.examify;
 
 import android.view.View;
 
@@ -6,7 +6,7 @@ import android.view.View;
  * Created by rparayno on 11/03/2018.
  */
 
-public interface ClassListener {
+public interface ViewClickListener {
 
     void onViewClick(View v, int position);
 }

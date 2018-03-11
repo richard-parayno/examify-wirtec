@@ -1,12 +1,23 @@
-package com.wirtec.rparayno.examify;
+package com.wirtec.rparayno.examify.FeedFragment;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.wirtec.rparayno.examify.ClassFragment.ClassAdapter;
+import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
+import com.wirtec.rparayno.examify.R;
+import com.wirtec.rparayno.examify.ViewClickListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -18,14 +29,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class FeedFragment extends android.support.v4.app.Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ArrayList<FeedCard> feedList;
+    private RecyclerView recyclerView;
+    private FeedAdapter fAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -33,20 +40,10 @@ public class FeedFragment extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FeedFragment.
-     */
     // TODO: Rename and change types and number of parameters
-    public static FeedFragment newInstance(String param1, String param2) {
+    public static FeedFragment newInstance() {
         FeedFragment fragment = new FeedFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,17 +51,33 @@ public class FeedFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed, container, false);
+        View view = inflater.inflate(R.layout.fragment_feed, container, false);
+
+        recyclerView = view.findViewById(R.id.recycler_view);
+        feedList = new ArrayList<>();
+
+
+        RecyclerView.LayoutManager fLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(fLayoutManager);
+
+        fAdapter = new FeedAdapter(feedList, new ViewClickListener() {
+            @Override
+            public void onViewClick(View v, int position) {
+
+            }
+        });
+        recyclerView.setAdapter(fAdapter);
+        Log.d("STATUS", "adapter init");
+
+        prepareDummy();
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,5 +117,24 @@ public class FeedFragment extends android.support.v4.app.Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void prepareDummy() {
+        FeedCard feedCard = new FeedCard("Richard Parayno", "Online: Now", "fuck you all", 1);
+        feedList.add(feedCard);
+
+        feedCard = new FeedCard("Richard aaa", "Online: Now", "fuck you all", 1);
+        feedList.add(feedCard);
+
+        feedCard = new FeedCard("Richard bbb", "Online: Now", "fuck you all", 1);
+        feedList.add(feedCard);
+
+        feedCard = new FeedCard("Richard ccc", "Online: Now", "fuck you all", 1);
+        feedList.add(feedCard);
+
+        feedCard = new FeedCard("Richard Parzzzzayno", "Online: Now", "fuck you all", 1);
+        feedList.add(feedCard);
+
+        fAdapter.notifyDataSetChanged();
     }
 }

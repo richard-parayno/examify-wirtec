@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.wirtec.rparayno.examify.ClassFragment.ClassFragment;
+import com.wirtec.rparayno.examify.FeedFragment.FeedFragment;
 
 public class MainActivity extends AppCompatActivity
         implements ClassFragment.OnFragmentInteractionListener,

@@ -3,7 +3,6 @@ package com.wirtec.rparayno.examify.ClassFragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wirtec.rparayno.examify.R;
+import com.wirtec.rparayno.examify.ViewClickListener;
 
 import java.util.ArrayList;
 
@@ -53,7 +53,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         RecyclerView.LayoutManager cLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(cLayoutManager);
 
-        cAdapter = new ClassAdapter(classList, new ClassListener() {
+        cAdapter = new ClassAdapter(classList, new ViewClickListener() {
             @Override
             public void onViewClick(View v, int position) {
 
