@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -47,7 +48,7 @@ public class ClassActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager cLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(cLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+
 
         this.cAdapter = new ClassAdapter(classList, new ClassListener() {
             @Override
@@ -128,4 +129,5 @@ public class ClassActivity extends AppCompatActivity {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
+
 }
