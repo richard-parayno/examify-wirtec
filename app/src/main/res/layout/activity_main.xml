@@ -20,8 +20,8 @@
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/bottomNav"
         android:foreground="?attr/selectableItemBackground"
-        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemIconTint="@layout/bot_nav_color_selector"
         app:itemTextColor="@color/colorPrimaryDark"
-        app:menu="@layout/bot_nav"/>
+        app:menu="@layout/bot_nav" />
 
 </android.support.design.widget.CoordinatorLayout>

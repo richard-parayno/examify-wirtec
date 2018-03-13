@@ -6,13 +6,18 @@
     <item
         android:id="@+id/nav_feed"
         android:enabled="true"
-        android:title="Feed" />
+        android:title="Feed"
+        android:icon="@drawable/ic_toc_black_24dp" />
     <item
         android:id="@+id/nav_classes"
         android:enabled="true"
-        android:title="Classes" />
+        android:title="Classes"
+        android:icon="@drawable/ic_school_black_24dp" />
+
     <item
         android:id="@+id/nav_profile"
         android:enabled="true"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@drawable/ic_person_black_24dp" />
+
 </menu>
