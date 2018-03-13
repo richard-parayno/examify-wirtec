@@ -170,8 +170,8 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        bundle = getArguments();
-        Log.d("STATUS", "curr size: " + getArguments().size());
+        //bundle = getArguments();
+        //Log.d("STATUS", "curr size: " + getArguments().size());
 
 
     }
