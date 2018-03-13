@@ -1,6 +1,7 @@
 package com.wirtec.rparayno.examify;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,15 +17,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.appevents.AppEventsLogger;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -33,6 +44,7 @@ public class LoginActivity extends AppCompatActivity{
     private LoginButton fbBtn;
     private final int REQUEST_CODE_INTERNET = 1;
     private CallbackManager callBackManager;
+    private ProgressDialog nDialog;
 
     private Button login;
 
@@ -43,6 +55,8 @@ public class LoginActivity extends AppCompatActivity{
         AppEventsLogger.activateApp(this);
         // remove title
         removeTitleBar();
+        // check login
+        boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
         // request permissions
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
 
@@ -69,7 +83,10 @@ public class LoginActivity extends AppCompatActivity{
         password = (EditText) findViewById(R.id.editPassword);
         fbBtn = (LoginButton) findViewById(R.id.fb_loginBtn);
 
+        fbBtn.setReadPermissions(Arrays.asList("public_profile", "email", "user_friends"));
+
         login = (Button) findViewById(R.id.loginButton);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,10 +105,35 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
     }
 
+    /** private void getData(JSONObject object){
+        try{
+            URL profile_picture = new URL("https://graph.facebook.com/" + object.getString("id") +"/picture?width=250&height=250");
+
+            Picasso.with(this).load(profile_picture.toString()).into(imgAvatar);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    } **/
+
     private void loginWithFacebook(){
         LoginManager.getInstance().registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                /** nDialog = new ProgressDialog(LoginActivity.this);
+                nDialog.setMessage("Retrieving Data...");
+                nDialog.show();
+
+                String accessToken = loginResult.getAccessToken().getToken();
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        nDialog.dismiss();
+                        Bundle facebookData = getFacebookData(Object);
+                    }
+                }); **/
+
                 Intent fbLoginIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(fbLoginIntent);
             }
