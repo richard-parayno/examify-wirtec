@@ -20,5 +20,6 @@
         <activity android:name=".ClassActivity.ClassActivity" />
         <activity android:name=".SettingsActivity.SettingActivity"></activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
