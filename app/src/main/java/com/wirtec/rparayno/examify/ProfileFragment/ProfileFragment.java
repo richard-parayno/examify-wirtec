@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.ClassFragment.ClassAdapter;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
 import com.wirtec.rparayno.examify.R;
@@ -30,6 +31,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
     private ProfileAdapter pAdapter;
     private ImageButton settingsButton;
+    private static final int ENTER_SETTING_CODE = 1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -78,8 +80,12 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent settingsIntent = new Intent(getContext(), SettingActivity.class);
-                startActivity(settingsIntent);
+                Intent selectedClass = new Intent(getActivity(), SettingActivity.class);
+                startActivity(selectedClass);
+                Bundle classBundle = new Bundle();
+                selectedClass.putExtras(classBundle);
+
+                startActivityForResult(selectedClass, ENTER_SETTING_CODE);
             }
         });
 

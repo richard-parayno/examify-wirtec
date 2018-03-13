@@ -1,10 +1,14 @@
 package com.wirtec.rparayno.examify.SettingsActivity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,6 +17,7 @@ import com.wirtec.rparayno.examify.R;
 public class SettingActivity extends AppCompatActivity {
     private String[] settingsArray = {"Logout"};
     private ListView listView;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +41,19 @@ public class SettingActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+
+        backButton = (ImageButton) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //todo: finish bundle logic
+                Intent editedIntent = new Intent();
+                Bundle editedBundle = new Bundle();
+                editedIntent.putExtras(editedBundle);
+                Log.d("STATUS", "activity preparation -- going back with content");
+                finish();
+                Log.d("STATUS", "activity finished");
+            }
+        });
     }
 }
