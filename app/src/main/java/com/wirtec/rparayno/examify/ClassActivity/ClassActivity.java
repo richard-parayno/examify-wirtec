@@ -1,10 +1,8 @@
 package com.wirtec.rparayno.examify.ClassActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,9 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.wirtec.rparayno.examify.ClassFragment.ClassAdapter;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
-import com.wirtec.rparayno.examify.ClassFragment.ClassFragment;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
 
@@ -52,8 +48,8 @@ public class ClassActivity extends AppCompatActivity {
     }
 
     private void initResources() {
-        className = (TextView) findViewById(R.id.className);
-        classNameSub = (TextView) findViewById(R.id.classNameSub);
+        className = (TextView) findViewById(R.id.userName);
+        classNameSub = (TextView) findViewById(R.id.userNameSub);
 
         backButton = (ImageButton) findViewById(R.id.backButton);
 

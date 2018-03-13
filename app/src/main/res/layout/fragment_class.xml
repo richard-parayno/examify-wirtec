@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/className"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
@@ -29,13 +29,13 @@
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/classNameSub"
+            app:layout_constraintBottom_toTopOf="@+id/userNameSub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/classNameSub"
+            android:id="@+id/userNameSub"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginBottom="30dp"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/className" />
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView

@@ -4,16 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -24,11 +28,15 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
     private ClassAdapter cAdapter;
 
+    private Bundle bundle;
+
     private OnFragmentInteractionListener mListener;
 
     private static final int SELECTED_CLASS_CODE = 1;
 
     private static final String SELECTED_CLASS_KEY = "className";
+
+    private TextView userName;
 
     public ClassFragment() {
         // Required empty public constructor
@@ -36,8 +44,6 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     // TODO: Rename and change types and number of parameters
     public static ClassFragment newInstance() {
         ClassFragment fragment = new ClassFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -50,7 +56,12 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.fragment_class, container, false);
+
+        userName = view.findViewById(R.id.userName);
+
 
         recyclerView = view.findViewById(R.id.recycler_view);
         classList = new ArrayList<>();
@@ -153,5 +164,15 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        bundle = getArguments();
+        Log.d("STATUS", "curr size: " + getArguments().size());
+
+
     }
 }

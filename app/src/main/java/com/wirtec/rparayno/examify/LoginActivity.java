@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -121,7 +122,7 @@ public class LoginActivity extends AppCompatActivity{
         LoginManager.getInstance().registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                /** nDialog = new ProgressDialog(LoginActivity.this);
+                nDialog = new ProgressDialog(LoginActivity.this);
                 nDialog.setMessage("Retrieving Data...");
                 nDialog.show();
 
@@ -129,13 +130,29 @@ public class LoginActivity extends AppCompatActivity{
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        nDialog.dismiss();
-                        Bundle facebookData = getFacebookData(Object);
-                    }
-                }); **/
+                        Intent fbLoginIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        Bundle passToIntent = new Bundle();
+                        try {
+                            passToIntent.putString("id", object.get("id").toString());
+                            passToIntent.putString("name", object.get("name").toString());
+                            passToIntent.putString("link", object.get("link").toString());
+                            Log.d("STATUS", "bundle size: " + passToIntent.size());
+                            Log.d("STATUS", "id: " + passToIntent.getString("id"));
+                            Log.d("STATUS", "name: " + passToIntent.getString("name"));
+                            Log.d("STATUS", "link: " + passToIntent.getString("link"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        fbLoginIntent.putExtras(passToIntent);
+                        startActivity(fbLoginIntent);
 
-                Intent fbLoginIntent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(fbLoginIntent);
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,link");
+                request.setParameters(parameters);
+                request.executeAsync();
+
             }
 
             @Override

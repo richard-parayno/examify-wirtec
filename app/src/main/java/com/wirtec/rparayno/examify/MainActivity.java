@@ -2,14 +2,17 @@ package com.wirtec.rparayno.examify;
 
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,13 +27,14 @@ public class MainActivity extends AppCompatActivity
         ProfileFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView navigation;
-    private Fragment fragment;
+    //private static FragmentManager fragmentManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeTitleBar();
+        //fragmentManager = getSupportFragmentManager();
         initResources();
     }
 
@@ -43,23 +47,41 @@ public class MainActivity extends AppCompatActivity
 
     private void initResources() {
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+        final Bundle oldBundle = getIntent().getExtras();
+        Log.d("STATUS", "pre-argument bundle size: " + oldBundle.size());
+        Log.d("STATUS", "id: " + oldBundle.getString("id"));
+        Log.d("STATUS", "name: " + oldBundle.getString("name"));
+        Log.d("STATUS", "link: " + oldBundle.getString("link"));
+
+
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.nav_feed:
-                        fragment = new FeedFragment();
-                        loadFragment(fragment);
+                        FeedFragment fFragment = new FeedFragment();
+                        fFragment.setArguments(oldBundle);
+                        //fragmentManager.beginTransaction().replace(R.id.frame_container, fFragment).addToBackStack(null).commit();
+                        loadFragment(fFragment);
                         return true;
+                        //break;
                     case R.id.nav_classes:
-                        fragment = new ClassFragment();
-                        loadFragment(fragment);
+                        ClassFragment cFragment = new ClassFragment();
+                        cFragment.setArguments(oldBundle);
+                        //fragmentManager.beginTransaction().replace(R.id.frame_container, cFragment).addToBackStack(null).commit();
+                        loadFragment(cFragment);
                         return true;
+                        //break;
+
                     case R.id.nav_profile:
-                        fragment = new ProfileFragment();
-                        loadFragment(fragment);
+                        ProfileFragment pFragment = new ProfileFragment();
+                        pFragment.setArguments(oldBundle);
+                        //fragmentManager.beginTransaction().replace(R.id.frame_container, pFragment).addToBackStack(null).commit();
+                        loadFragment(pFragment);
                         return true;
+                        //break;
+
                 }
                 return false;
             }
