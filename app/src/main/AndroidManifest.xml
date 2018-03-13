@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".ClassActivity.ClassActivity"></activity>
+        <activity android:name=".ClassActivity.ClassActivity" />
+        <activity android:name=".SettingsActivity.SettingActivity"></activity>
     </application>
 
 </manifest>

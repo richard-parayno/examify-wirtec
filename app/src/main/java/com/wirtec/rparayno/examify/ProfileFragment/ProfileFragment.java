@@ -1,6 +1,7 @@
 package com.wirtec.rparayno.examify.ProfileFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -11,10 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.wirtec.rparayno.examify.ClassFragment.ClassAdapter;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
 import com.wirtec.rparayno.examify.R;
+import com.wirtec.rparayno.examify.SettingsActivity.SettingActivity;
 import com.wirtec.rparayno.examify.User;
 import com.wirtec.rparayno.examify.ViewClickListener;
 
@@ -26,6 +29,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     private ArrayList<ProfileCard> profileList;
     private RecyclerView recyclerView;
     private ProfileAdapter pAdapter;
+    private ImageButton settingsButton;
 
     private OnFragmentInteractionListener mListener;
 
@@ -53,14 +57,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         profileList = new ArrayList<>();
-        User user = new User("richard", "richard", 1);
-        user.setBestClass("WIR-TEC");
-        user.setLastOnline("Yesterday");
-        user.setCurrentXP(0);
-        user.setMedals(5);
-        ProfileCard profileCard = new ProfileCard(user);
-        profileCard.setType(0);
-        profileList.add(profileCard);
+        prepareDummy();
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setAdapter(pAdapter = new ProfileAdapter(profileList, new ViewClickListener() {
@@ -75,6 +72,16 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         Log.d("STATUS", "adapter init");
         pAdapter.notifyDataSetChanged();
         Log.d("STATUS", "data set notified");
+
+        //settings
+        settingsButton = (ImageButton) view.findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(getContext(), SettingActivity.class);
+                startActivity(settingsIntent);
+            }
+        });
 
         return view;
     }
@@ -122,6 +129,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         User user = new User("richard", "richard", 1);
         user.setBestClass("WIR-TEC");
         user.setLastOnline("Yesterday");
+        user.setCurrentXP(0);
         user.setMedals(5);
         ProfileCard profileCard = new ProfileCard(user);
         profileCard.setType(0);
