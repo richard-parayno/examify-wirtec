@@ -8,16 +8,20 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.login.LoginManager;
+import com.wirtec.rparayno.examify.LoginActivity;
 import com.wirtec.rparayno.examify.R;
 
 public class SettingActivity extends AppCompatActivity {
     private String[] settingsArray = {"Logout"};
     private ListView listView;
     private ImageButton backButton;
+    private Button fbLogoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,18 @@ public class SettingActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+
+        fbLogoutBtn = (Button) findViewById(R.id.fb_LogoutBtn);
+        fbLogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginManager.getInstance().logOut();
+                Intent logoutIntent = new Intent(SettingActivity.this, LoginActivity.class);
+                startActivity(logoutIntent);
+                finish();
+            }
+        });
+
 
         backButton = (ImageButton) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
