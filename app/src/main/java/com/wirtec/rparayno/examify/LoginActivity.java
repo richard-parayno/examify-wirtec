@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        LoginManager.getInstance().logOut();
         // remove title
         removeTitleBar();
         // check login
@@ -77,8 +78,6 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void initResources() {
-
-        callBackManager = CallbackManager.Factory.create();
         username = (EditText) findViewById(R.id.editName);
         password = (EditText) findViewById(R.id.editPassword);
         fbBtn = (LoginButton) findViewById(R.id.fb_loginBtn);
@@ -95,13 +94,14 @@ public class LoginActivity extends AppCompatActivity{
                 startActivity(classIntent);
             }
         });
+
+        callBackManager = CallbackManager.Factory.create();
     }
 
     private void removeTitleBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
     }
 

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.facebook.login.LoginManager;
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.ClassFragment.ClassAdapter;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
@@ -132,6 +133,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     }
 
     private void prepareDummy() {
+
         User user = new User("richard", "richard", 1);
         user.setBestClass("WIR-TEC");
         user.setLastOnline("Yesterday");

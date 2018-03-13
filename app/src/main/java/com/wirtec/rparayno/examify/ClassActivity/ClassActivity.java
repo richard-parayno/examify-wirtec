@@ -72,8 +72,10 @@ public class ClassActivity extends AppCompatActivity {
     }
 
     private void intentChecker() {
-        Intent prevIntent = getIntent();
-        if (prevIntent.getExtras() != null) {
+        Intent classIntent = getIntent();
+        if (classIntent.getExtras() != null) {
+            Bundle bundle = classIntent.getExtras();
+            className.setText(bundle.getString("className"));
             backButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

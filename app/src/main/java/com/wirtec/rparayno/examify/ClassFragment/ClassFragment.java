@@ -28,6 +28,8 @@ public class ClassFragment extends android.support.v4.app.Fragment {
 
     private static final int SELECTED_CLASS_CODE = 1;
 
+    private static final String SELECTED_CLASS_KEY = "className";
+
     public ClassFragment() {
         // Required empty public constructor
     }
@@ -63,6 +65,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
                 Intent selectedClass = new Intent(getActivity(), ClassActivity.class);
                 startActivity(selectedClass);
                 Bundle classBundle = new Bundle();
+                classBundle.putString(SELECTED_CLASS_KEY, classList.get(position).getClassName());
                 selectedClass.putExtras(classBundle);
 
                 startActivityForResult(selectedClass, SELECTED_CLASS_CODE);
