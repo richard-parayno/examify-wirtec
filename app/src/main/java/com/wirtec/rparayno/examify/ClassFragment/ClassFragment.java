@@ -1,6 +1,7 @@
 package com.wirtec.rparayno.examify.ClassFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
 
@@ -23,6 +25,8 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     private ClassAdapter cAdapter;
 
     private OnFragmentInteractionListener mListener;
+
+    private static final int SELECTED_CLASS_CODE = 1;
 
     public ClassFragment() {
         // Required empty public constructor
@@ -56,7 +60,12 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         cAdapter = new ClassAdapter(classList, new ViewClickListener() {
             @Override
             public void onViewClick(View v, int position) {
+                Intent selectedClass = new Intent(getActivity(), ClassActivity.class);
+                startActivity(selectedClass);
+                Bundle classBundle = new Bundle();
+                selectedClass.putExtras(classBundle);
 
+                startActivityForResult(selectedClass, SELECTED_CLASS_CODE);
             }
         });
         recyclerView.setAdapter(cAdapter);
@@ -136,5 +145,10 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         classList.add(classCard);
 
         cAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
