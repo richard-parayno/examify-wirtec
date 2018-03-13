@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Examify</string>
+    <string name="faceboock_app_id">1970090699875048</string>
+    <string name="fb_login_protocol_scheme">fb1970090699875048</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
