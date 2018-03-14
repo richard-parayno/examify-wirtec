@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
@@ -59,7 +60,13 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        TextView userName = view.findViewById(R.id.userName);
+        Bundle bundle = getArguments();
+        Log.d("STATUS", "curr size: " + getArguments().size());
+        userName.setText(bundle.getString("first_name"));
+
         profileList = new ArrayList<>();
+
         prepareDummy();
 
         recyclerView = view.findViewById(R.id.recycler_view);

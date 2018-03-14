@@ -42,7 +42,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
     // TODO: Rename and change types and number of parameters
-    public static ClassFragment newInstance() {
+    public static ClassFragment newInstance(Bundle oldBundle) {
         ClassFragment fragment = new ClassFragment();
         return fragment;
     }
@@ -61,6 +61,9 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_class, container, false);
 
         userName = view.findViewById(R.id.userName);
+        bundle = getArguments();
+        Log.d("STATUS", "curr size: " + getArguments().size());
+        userName.setText("Welcome, " + bundle.getString("first_name") + ".");
 
 
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -170,9 +173,5 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //bundle = getArguments();
-        //Log.d("STATUS", "curr size: " + getArguments().size());
-
-
     }
 }

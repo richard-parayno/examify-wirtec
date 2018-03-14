@@ -134,11 +134,11 @@ public class LoginActivity extends AppCompatActivity{
                         Bundle passToIntent = new Bundle();
                         try {
                             passToIntent.putString("id", object.get("id").toString());
-                            passToIntent.putString("name", object.get("name").toString());
+                            passToIntent.putString("first_name", object.get("first_name").toString());
                             passToIntent.putString("link", object.get("link").toString());
                             Log.d("STATUS", "bundle size: " + passToIntent.size());
                             Log.d("STATUS", "id: " + passToIntent.getString("id"));
-                            Log.d("STATUS", "name: " + passToIntent.getString("name"));
+                            Log.d("STATUS", "name: " + passToIntent.getString("first_name"));
                             Log.d("STATUS", "link: " + passToIntent.getString("link"));
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity{
                     }
                 });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,link");
+                parameters.putString("fields", "id,first_name,link");
                 request.setParameters(parameters);
                 request.executeAsync();
 

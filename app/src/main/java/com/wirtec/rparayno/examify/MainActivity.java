@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         final Bundle oldBundle = getIntent().getExtras();
         Log.d("STATUS", "pre-argument bundle size: " + oldBundle.size());
         Log.d("STATUS", "id: " + oldBundle.getString("id"));
-        Log.d("STATUS", "name: " + oldBundle.getString("name"));
+        Log.d("STATUS", "name: " + oldBundle.getString("first_name"));
         Log.d("STATUS", "link: " + oldBundle.getString("link"));
 
 
@@ -90,7 +90,9 @@ public class MainActivity extends AppCompatActivity
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
 
-        loadFragment(new ClassFragment());
+        ClassFragment cFragment = new ClassFragment();
+        cFragment.setArguments(oldBundle);
+        loadFragment(cFragment);
     }
 
     private void loadFragment(Fragment fragment) {
