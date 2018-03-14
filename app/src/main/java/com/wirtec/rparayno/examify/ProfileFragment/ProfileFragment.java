@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.ClassFragment.ClassAdapter;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
@@ -59,9 +61,15 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Bundle bundle = getArguments();
 
         TextView userName = view.findViewById(R.id.userName);
-        Bundle bundle = getArguments();
+
+        CircularImageView userImage = view.findViewById(R.id.userImage);
+
+        Picasso.with(getContext()).load("http://graph.facebook.com/" + bundle.getString("id") + "/picture");
+
+
         Log.d("STATUS", "curr size: " + getArguments().size());
         userName.setText(bundle.getString("first_name"));
 

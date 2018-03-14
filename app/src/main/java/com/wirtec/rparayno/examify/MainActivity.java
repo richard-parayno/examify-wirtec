@@ -27,14 +27,11 @@ public class MainActivity extends AppCompatActivity
         ProfileFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView navigation;
-    //private static FragmentManager fragmentManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeTitleBar();
-        //fragmentManager = getSupportFragmentManager();
         initResources();
     }
 
@@ -62,25 +59,19 @@ public class MainActivity extends AppCompatActivity
                     case R.id.nav_feed:
                         FeedFragment fFragment = new FeedFragment();
                         fFragment.setArguments(oldBundle);
-                        //fragmentManager.beginTransaction().replace(R.id.frame_container, fFragment).addToBackStack(null).commit();
                         loadFragment(fFragment);
                         return true;
-                        //break;
                     case R.id.nav_classes:
                         ClassFragment cFragment = new ClassFragment();
                         cFragment.setArguments(oldBundle);
-                        //fragmentManager.beginTransaction().replace(R.id.frame_container, cFragment).addToBackStack(null).commit();
                         loadFragment(cFragment);
                         return true;
-                        //break;
 
                     case R.id.nav_profile:
                         ProfileFragment pFragment = new ProfileFragment();
                         pFragment.setArguments(oldBundle);
-                        //fragmentManager.beginTransaction().replace(R.id.frame_container, pFragment).addToBackStack(null).commit();
                         loadFragment(pFragment);
                         return true;
-                        //break;
 
                 }
                 return false;
