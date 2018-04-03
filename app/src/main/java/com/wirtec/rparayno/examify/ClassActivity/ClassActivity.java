@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
@@ -33,7 +34,7 @@ public class ClassActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ClassAdapter2 cAdapter;
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseTopics;
     private ArrayList<String> mClassList = new ArrayList<>();
 
     @Override
@@ -46,37 +47,26 @@ public class ClassActivity extends AppCompatActivity {
 
         intentChecker();
 
-        getClassNames();
+        getTopicNames();
 
         prepareDummy();
     }
 
-    private void getClassNames(){
+    private void getTopicNames(){
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Courses").child("Topics");
+        mDatabaseTopics = FirebaseDatabase.getInstance().getReference().child("Courses").child("WIR-TEC").child("Topics");
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
+        mDatabaseTopics.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                String value = dataSnapshot.getValue(String.class);
-                mClassList.add(value);
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot topicSnapshot : dataSnapshot.getChildren()){
+                    Topics mTopic = topicSnapshot.getValue(Topics.class);
+                    Log.d("TopicName:", mTopic.getTopicName());
+                    mClassList.add(mTopic.getTopicName());
+                    Log.d("TopicNameSize:", mTopic.toString());
+                    ClassCard classCard = new ClassCard(mTopic.getTopicName(), 1);
+                    classList.add(classCard);
+                }
             }
 
             @Override
@@ -153,7 +143,7 @@ public class ClassActivity extends AppCompatActivity {
     private void prepareDummy() {
 
         for(int i = 0; i < mClassList.size(); i++) {
-            ClassCard classCard = new ClassCard(mClassList.get(i), 1);
+            ClassCard classCard = new ClassCard("Dummy", 1);
             classList.add(classCard);
         }
 

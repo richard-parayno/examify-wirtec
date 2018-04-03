@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
@@ -63,30 +64,19 @@ public class ClassFragment extends android.support.v4.app.Fragment {
 
     private void getClassNames(){
 
-        mDatabaseCourses = FirebaseDatabase.getInstance().getReference("Courses");
+        mDatabaseCourses = FirebaseDatabase.getInstance().getReference().child("Courses");
 
-        mDatabaseCourses.addChildEventListener(new ChildEventListener() {
+        mDatabaseCourses.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                String value = dataSnapshot.child("Courses").getValue(String.class);
-                mClassList.add(value);
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot coursesSnapshot : dataSnapshot.getChildren()){
+                    String courseName = (String) coursesSnapshot.child("CourseName").getValue();
+                    Log.d("CourseName:", courseName);
+                    mClassList.add(courseName);
+                    Log.d("ClassListSize:", mClassList.toString());
+                    ClassCard classCard = new ClassCard(courseName, 1);
+                    classList.add(classCard);
+                }
             }
 
             @Override
@@ -121,6 +111,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
             @Override
             public void onViewClick(View v, int position) {
                 Intent selectedClass = new Intent(getActivity(), ClassActivity.class);
+                Log.d("ButtonPressed:", classList.get(position).getClassName());
                 startActivity(selectedClass);
                 Bundle classBundle = new Bundle();
                 classBundle.putString(SELECTED_CLASS_KEY, classList.get(position).getClassName());
@@ -133,8 +124,6 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         Log.d("STATUS", "adapter init");
 
         getClassNames();
-
-        prepareDummy();
 
         return view;
     }
