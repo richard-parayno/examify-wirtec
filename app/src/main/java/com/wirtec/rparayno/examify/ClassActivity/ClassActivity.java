@@ -9,9 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
@@ -27,6 +33,9 @@ public class ClassActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ClassAdapter2 cAdapter;
 
+    private DatabaseReference mDatabase;
+    private ArrayList<String> mClassList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +46,45 @@ public class ClassActivity extends AppCompatActivity {
 
         intentChecker();
 
+        getClassNames();
+
         prepareDummy();
+    }
+
+    private void getClassNames(){
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Courses").child("Topics");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                String value = dataSnapshot.getValue(String.class);
+                mClassList.add(value);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void removeTitleBar() {
@@ -104,32 +151,11 @@ public class ClassActivity extends AppCompatActivity {
     }
 
     private void prepareDummy() {
-        ClassCard classCard = new ClassCard("WIR-TEC", 1);
-        classList.add(classCard);
 
-        classCard = new ClassCard("HUMALIT", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("GREATWK", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("ITMATH2", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("DASTAPP", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("HUMALIT", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("GREATWK", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("ITMATH2", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("DASTAPP", 1);
-        classList.add(classCard);
+        for(int i = 0; i < mClassList.size(); i++) {
+            ClassCard classCard = new ClassCard(mClassList.get(i), 1);
+            classList.add(classCard);
+        }
 
         cAdapter.notifyDataSetChanged();
     }

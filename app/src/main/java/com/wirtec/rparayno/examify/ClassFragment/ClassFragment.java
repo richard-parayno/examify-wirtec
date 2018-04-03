@@ -13,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
@@ -38,6 +43,9 @@ public class ClassFragment extends android.support.v4.app.Fragment {
 
     private TextView userName;
 
+    private DatabaseReference mDatabaseCourses;
+    private ArrayList<String> mClassList = new ArrayList<>();
+
     public ClassFragment() {
         // Required empty public constructor
     }
@@ -50,6 +58,42 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    private void getClassNames(){
+
+        mDatabaseCourses = FirebaseDatabase.getInstance().getReference("Courses");
+
+        mDatabaseCourses.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                String value = dataSnapshot.child("Courses").getValue(String.class);
+                mClassList.add(value);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -87,6 +131,8 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         });
         recyclerView.setAdapter(cAdapter);
         Log.d("STATUS", "adapter init");
+
+        getClassNames();
 
         prepareDummy();
 
@@ -134,32 +180,13 @@ public class ClassFragment extends android.support.v4.app.Fragment {
 
 
     private void prepareDummy() {
-        ClassCard classCard = new ClassCard("WIR-TEC", 1);
-        classList.add(classCard);
 
-        classCard = new ClassCard("HUMALIT", 1);
-        classList.add(classCard);
+        for(int i = 0; i < mClassList.size(); i++) {
 
-        classCard = new ClassCard("GREATWK", 1);
-        classList.add(classCard);
+            ClassCard classCard = new ClassCard(mClassList.get(i), 1);
+            classList.add(classCard);
 
-        classCard = new ClassCard("ITMATH2", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("DASTAPP", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("HUMALIT", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("GREATWK", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("ITMATH2", 1);
-        classList.add(classCard);
-
-        classCard = new ClassCard("DASTAPP", 1);
-        classList.add(classCard);
+        }
 
         cAdapter.notifyDataSetChanged();
     }
