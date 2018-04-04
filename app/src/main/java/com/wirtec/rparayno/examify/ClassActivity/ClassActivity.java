@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
+import com.wirtec.rparayno.examify.GameActivity.GameActivity;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
 
@@ -30,12 +31,16 @@ public class ClassActivity extends AppCompatActivity {
     private TextView classNameSub;
     private ImageButton backButton;
 
-    private ArrayList<ClassCard> classList;
+    private ArrayList<ClassCard> topicList;
     private RecyclerView recyclerView;
     private ClassAdapter2 cAdapter;
 
     private DatabaseReference mDatabaseTopics;
     private ArrayList<String> mClassList = new ArrayList<>();
+
+    private static final int SELECTED_TOPIC_CODE = 1;
+
+    private static final String SELECTED_TOPIC_KEY = "topicName";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +53,6 @@ public class ClassActivity extends AppCompatActivity {
         intentChecker();
 
         getTopicNames();
-
-        prepareDummy();
     }
 
     private void getTopicNames(){
@@ -63,9 +66,9 @@ public class ClassActivity extends AppCompatActivity {
                     Topics mTopic = topicSnapshot.getValue(Topics.class);
                     Log.d("TopicName:", mTopic.getTopicName());
                     mClassList.add(mTopic.getTopicName());
-                    Log.d("TopicNameSize:", mTopic.toString());
-                    ClassCard classCard = new ClassCard(mTopic.getTopicName(), 1);
-                    classList.add(classCard);
+                    Log.d("TopicNameSize:", mTopic.getTopicName());
+                    ClassCard topicCard = new ClassCard(mTopic.getTopicName(), 1);
+                    topicList.add(topicCard);
                 }
             }
 
@@ -91,11 +94,23 @@ public class ClassActivity extends AppCompatActivity {
         backButton = (ImageButton) findViewById(R.id.backButton);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        classList = new ArrayList<>();
-        cAdapter = new ClassAdapter2(classList, new ViewClickListener() {
+        topicList = new ArrayList<>();
+        cAdapter = new ClassAdapter2(topicList, new ViewClickListener() {
+
             @Override
             public void onViewClick(View v, int position) {
+                Intent selectedTopic = new Intent(ClassActivity.this, GameActivity.class);
 
+                Log.d("ButtonPressed:", topicList.get(position).getClassName());
+                Log.d("GoingTo:", GameActivity.class.getName());
+
+                Bundle classBundle = new Bundle();
+                classBundle.putString(SELECTED_TOPIC_KEY, topicList.get(position).getClassName());
+                selectedTopic.putExtras(classBundle);
+
+                selectedTopic.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                startActivity(selectedTopic);
+                finish();
             }
         });
 
@@ -144,7 +159,7 @@ public class ClassActivity extends AppCompatActivity {
 
         for(int i = 0; i < mClassList.size(); i++) {
             ClassCard classCard = new ClassCard("Dummy", 1);
-            classList.add(classCard);
+            topicList.add(classCard);
         }
 
         cAdapter.notifyDataSetChanged();

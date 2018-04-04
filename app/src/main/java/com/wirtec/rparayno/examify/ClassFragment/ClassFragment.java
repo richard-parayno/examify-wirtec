@@ -113,7 +113,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
             public void onViewClick(View v, int position) {
                 Intent selectedClass = new Intent(getActivity(), ClassActivity.class);
                 Log.d("ButtonPressed:", classList.get(position).getClassName());
-                startActivity(selectedClass);
+                Log.d("GoToClassAct:", ClassActivity.class.getName());
                 Bundle classBundle = new Bundle();
                 classBundle.putString(SELECTED_CLASS_KEY, classList.get(position).getClassName());
                 selectedClass.putExtras(classBundle);

@@ -1,22 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context="com.wirtec.rparayno.examify.FeedFragment.FeedFragment">
+    tools:context="com.wirtec.rparayno.examify.GameActivity.GameActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+    <TextView
+        android:id="@+id/qTextView"
+        android:layout_width="368dp"
+        android:layout_height="291dp"
+        android:layout_marginBottom="203dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingTop="10dp"
+        android:text="Question Text"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    </android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/choice1Btn"
+        android:layout_width="125dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="19dp"
+        android:text="Choice 1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qTextView" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/choice2Btn"
+        android:layout_width="125dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="19dp"
+        android:text="Choice 2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qTextView" />
+
+    <Button
+        android:id="@+id/choice3Btn"
+        android:layout_width="125dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="49dp"
+        android:text="Choice 3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choice1Btn" />
+
+    <Button
+        android:id="@+id/choice4Btn"
+        android:layout_width="125dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="49dp"
+        android:text="Choice 4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choice2Btn" />
+</android.support.constraint.ConstraintLayout>
+
