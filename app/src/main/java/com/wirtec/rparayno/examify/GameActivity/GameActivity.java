@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.wirtec.rparayno.examify.R;
 
 public class GameActivity extends AppCompatActivity {
-
     private TextView qTextView;
     private Button choice1Btn, choice2Btn, choice3Btn, choice4Btn;
 
@@ -38,5 +37,6 @@ public class GameActivity extends AppCompatActivity {
         choice3Btn = (Button) findViewById(R.id.choice3Btn);
         choice4Btn = (Button) findViewById(R.id.choice4Btn);
 
+        setContentView(R.layout.activity_game);
     }
 }
