@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initResources() {
+
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
 
         final Bundle oldBundle = getIntent().getExtras();

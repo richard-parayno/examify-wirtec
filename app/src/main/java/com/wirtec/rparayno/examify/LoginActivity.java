@@ -19,8 +19,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -100,24 +102,18 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void initResources() {
-        username = (EditText) findViewById(R.id.editName);
-        password = (EditText) findViewById(R.id.editPassword);
         fbBtn = (LoginButton) findViewById(R.id.fb_loginBtn);
 
         fbBtn.setReadPermissions(Arrays.asList("public_profile", "email", "user_friends"));
 
-        login = (Button) findViewById(R.id.loginButton);
-
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classIntent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(classIntent);
-            }
-        });
-
         callBackManager = CallbackManager.Factory.create();
+
+
+        LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
+        animationView.setAnimation(R.raw.logomain);
+        animationView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        animationView.playAnimation();
+
     }
 
     private void removeTitleBar() {
