@@ -76,6 +76,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
                     Log.d("ClassListSize:", mClassList.toString());
                     ClassCard classCard = new ClassCard(courseName, 1);
                     classList.add(classCard);
+                    cAdapter.notifyDataSetChanged();
                 }
             }
 
