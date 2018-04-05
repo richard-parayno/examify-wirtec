@@ -116,6 +116,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
                 Log.d("GoToClassAct:", ClassActivity.class.getName());
                 Bundle classBundle = new Bundle();
                 classBundle.putString(SELECTED_CLASS_KEY, classList.get(position).getClassName());
+
                 selectedClass.putExtras(classBundle);
 
                 startActivityForResult(selectedClass, SELECTED_CLASS_CODE);

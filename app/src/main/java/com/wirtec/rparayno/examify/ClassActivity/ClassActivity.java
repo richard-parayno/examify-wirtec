@@ -38,6 +38,9 @@ public class ClassActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseTopics;
     private ArrayList<String> mClassList = new ArrayList<>();
 
+    private String classPressed = "";
+    private Bundle bundle;
+
     private static final int SELECTED_TOPIC_CODE = 1;
 
     private static final String SELECTED_TOPIC_KEY = "topicName";
@@ -57,7 +60,9 @@ public class ClassActivity extends AppCompatActivity {
 
     private void getTopicNames(){
 
-        mDatabaseTopics = FirebaseDatabase.getInstance().getReference().child("Courses").child("WIR-TEC").child("Topics");
+
+
+        mDatabaseTopics = FirebaseDatabase.getInstance().getReference().child("Courses").child(classPressed).child("Topics");
 
         mDatabaseTopics.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,11 +128,16 @@ public class ClassActivity extends AppCompatActivity {
     private void intentChecker() {
         Intent classIntent = getIntent();
         if (classIntent.getExtras() != null) {
-            Bundle bundle = classIntent.getExtras();
+            bundle = classIntent.getExtras();
+            classPressed = bundle.getString("className");
             className.setText(bundle.getString("className"));
+
+            Log.d("classPressed:", classPressed);
+
             backButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     //todo: finish bundle logic
                     Intent editedIntent = new Intent();
                     Bundle editedBundle = new Bundle();
@@ -135,6 +145,7 @@ public class ClassActivity extends AppCompatActivity {
                     Log.d("STATUS", "activity preparation -- going back with content");
                     finish();
                     Log.d("STATUS", "activity finished");
+
                 }
             });
         } else {
