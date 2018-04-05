@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity3 extends AppCompatActivity {
     private TextView qTextView, timeLeft, currentUserScore, enemyUserScore;
     private Button choice1Btn, choice2Btn, choice3Btn, choice4Btn, answer;
 
@@ -56,6 +56,12 @@ public class GameActivity extends AppCompatActivity {
 
         getQuestionInfo();
 
+        Bundle scoreBundle = getIntent().getExtras();
+
+        int x = scoreBundle.getInt("scoreCounter");
+
+        scoreCounter = x;
+
         currentUserScore.setText("Score: " + scoreCounter);
 
         choice1Btn.setOnClickListener(new View.OnClickListener() {
@@ -65,16 +71,16 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
             }
         });
@@ -86,16 +92,16 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
             }
         });
@@ -107,16 +113,16 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
             }
         });
@@ -128,16 +134,16 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
-                    game2.putExtras(scoreBundle);
-                    startActivity(game2);
+                    Intent game4 = new Intent(GameActivity3.this, GameActivity4.class);
+                    game4.putExtras(scoreBundle);
+                    startActivity(game4);
                 }
             }
         });
@@ -153,30 +159,30 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    for(DataSnapshot questionSnapshot : dataSnapshot.getChildren()){
-                        String qText = (String) questionSnapshot.child("qText").getValue();
-                        questionTexts.add(qText);
-                        String choice_1 = (String) questionSnapshot.child("Choice_1").getValue();
-                        choice1Texts.add(choice_1);
-                        String choice_2 = (String) questionSnapshot.child("Choice_2").getValue();
-                        choice2Texts.add(choice_2);
-                        String choice_3 = (String) questionSnapshot.child("Choice_3").getValue();
-                        choice3Texts.add(choice_3);
-                        String choice_4 = (String) questionSnapshot.child("Choice_4").getValue();
-                        choice4Texts.add(choice_4);
-                        String answer = (String) questionSnapshot.child("Answer").getValue();
-                        answerTexts.add(answer);
+                for(DataSnapshot questionSnapshot : dataSnapshot.getChildren()){
+                    String qText = (String) questionSnapshot.child("qText").getValue();
+                    questionTexts.add(qText);
+                    String choice_1 = (String) questionSnapshot.child("Choice_1").getValue();
+                    choice1Texts.add(choice_1);
+                    String choice_2 = (String) questionSnapshot.child("Choice_2").getValue();
+                    choice2Texts.add(choice_2);
+                    String choice_3 = (String) questionSnapshot.child("Choice_3").getValue();
+                    choice3Texts.add(choice_3);
+                    String choice_4 = (String) questionSnapshot.child("Choice_4").getValue();
+                    choice4Texts.add(choice_4);
+                    String answer = (String) questionSnapshot.child("Answer").getValue();
+                    answerTexts.add(answer);
 
-                        Log.d("qList:", mQuestionList.toString());
+                    Log.d("qList:", mQuestionList.toString());
 
-                    }
+                }
 
-                qTextView.setText(questionTexts.get(0));
-                choice1Btn.setText(choice1Texts.get(0));
-                choice2Btn.setText(choice2Texts.get(0));
-                choice3Btn.setText(choice3Texts.get(0));
-                choice4Btn.setText(choice4Texts.get(0));
-                qAnswer = answerTexts.get(0);
+                qTextView.setText(questionTexts.get(2));
+                choice1Btn.setText(choice1Texts.get(2));
+                choice2Btn.setText(choice2Texts.get(2));
+                choice3Btn.setText(choice3Texts.get(2));
+                choice4Btn.setText(choice4Texts.get(2));
+                qAnswer = answerTexts.get(2);
 
             }
 
