@@ -43,7 +43,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameActivity.GameActivity" />
-        <activity android:name=".ModeSelectActivity.ModeSelectActivity"></activity>
+        <activity android:name=".ModeSelectActivity.ModeSelectActivity" />
+        <activity android:name=".VersusActivity.VersusActivity" />
+        <activity android:name=".ResultActivity.ResultActivity"></activity>
     </application>
 
 </manifest>

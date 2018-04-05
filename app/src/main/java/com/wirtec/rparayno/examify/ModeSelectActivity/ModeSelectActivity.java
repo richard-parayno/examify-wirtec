@@ -29,12 +29,12 @@ public class ModeSelectActivity extends AppCompatActivity {
 
     private ArrayList<ClassCard> modeList;
     private RecyclerView recyclerView;
-    private ClassAdapter2 cAdapter;
+    private ModeSelectAdapter mAdapter;
 
     private DatabaseReference mDatabaseTopics;
     private ArrayList<String> mModeList = new ArrayList<>();
 
-    private String modeSelect = "";
+    private String modeSelectPressed = "";
     private Bundle bundle;
 
     private static final int SELECTED_MODE_CODE = 1;
@@ -46,6 +46,7 @@ public class ModeSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         removeTitleBar();
         initResources();
+        //intentChecker();
     }
 
     private void removeTitleBar() {
@@ -63,7 +64,7 @@ public class ModeSelectActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         modeList = new ArrayList<>();
-        cAdapter = new ClassAdapter2(modeList, new ViewClickListener() {
+        mAdapter = new ModeSelectAdapter(modeList, new ViewClickListener() {
 
             @Override
             public void onViewClick(View v, int position) {
@@ -84,16 +85,55 @@ public class ModeSelectActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager cLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(cLayoutManager);
-        recyclerView.setAdapter(cAdapter);
+        recyclerView.setAdapter(mAdapter);
+
+        prepareDummy();
     }
 
     private void prepareDummy() {
+        ClassCard classCard = new ClassCard("Time Attack", 1);
+        modeList.add(classCard);
 
-        for(int i = 0; i < mModeList.size(); i++) {
-            ClassCard classCard = new ClassCard("Time Attack", 1);
-            modeList.add(classCard);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    //todo: not finished yet
+    private void intentChecker() {
+        Intent classIntent = getIntent();
+        if (classIntent.getExtras() != null) {
+            bundle = classIntent.getExtras();
+            modeSelectPressed = bundle.getString("modeName");
+            className.setText(bundle.getString("modeName"));
+
+            Log.d("classPressed:", modeSelectPressed);
+
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //todo: finish bundle logic
+                    Intent editedIntent = new Intent();
+                    Bundle editedBundle = new Bundle();
+                    editedIntent.putExtras(editedBundle);
+                    Log.d("STATUS", "activity preparation -- going back with content");
+                    finish();
+                    Log.d("STATUS", "activity finished");
+
+                }
+            });
+        } else {
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //todo: finish bundle logic
+                    Intent editedIntent = new Intent();
+                    Bundle editedBundle = new Bundle();
+                    editedIntent.putExtras(editedBundle);
+                    Log.d("STATUS", "activity preparation -- going back with no content");
+                    finish();
+                    Log.d("STATUS", "activity finished");
+                }
+            });
         }
-
-        cAdapter.notifyDataSetChanged();
     }
 }

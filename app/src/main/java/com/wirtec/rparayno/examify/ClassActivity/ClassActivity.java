@@ -59,9 +59,6 @@ public class ClassActivity extends AppCompatActivity {
     }
 
     private void getTopicNames(){
-
-
-
         mDatabaseTopics = FirebaseDatabase.getInstance().getReference().child("Courses").child(classPressed).child("Topics");
 
         mDatabaseTopics.addValueEventListener(new ValueEventListener() {
@@ -162,9 +159,6 @@ public class ClassActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
     }
 
     private void prepareDummy() {
