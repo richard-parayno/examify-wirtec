@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,10 +16,15 @@ import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
 import com.wirtec.rparayno.examify.LoginActivity;
+import com.wirtec.rparayno.examify.ModeSelectActivity.ModeSelectActivity;
+import com.wirtec.rparayno.examify.ModeSelectActivity.ModeSelectAdapter;
 import com.wirtec.rparayno.examify.R;
+import com.wirtec.rparayno.examify.ResultActivity.ResultActivity;
+import com.wirtec.rparayno.examify.VersusActivity.VersusActivity;
 
 public class SettingActivity extends AppCompatActivity {
     private String[] settingsArray = {"Logout"};
+    private String[] testerSettings = {"Result", "Versus", "Mode Select"};
     private ListView listView;
     private ImageButton backButton;
     private Button fbLogoutBtn;
@@ -40,11 +46,37 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initResources() {
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.listview_setting, settingsArray);
+        //main adapter
+        //ArrayAdapter adapter = new ArrayAdapter<String>(this,
+        //        R.layout.listview_setting, settingsArray);
+
+        //tester adapter
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.listview_setting, testerSettings);
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+
+        //tester
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (testerSettings[position]) {
+                    case "Result":
+                        Intent resultIntent = new Intent(SettingActivity.this, ResultActivity.class);
+                        startActivity(resultIntent);
+                        break;
+                    case "Versus":
+                        Intent versusIntent = new Intent(SettingActivity.this, VersusActivity.class);
+                        startActivity(versusIntent);
+                        break;
+                    case "Mode Select":
+                        Intent modeIntent = new Intent(SettingActivity.this, ModeSelectActivity.class);
+                        startActivity(modeIntent);
+                        break;
+                }
+            }
+        });
+
 
         fbLogoutBtn = (Button) findViewById(R.id.fb_LogoutBtn);
         fbLogoutBtn.setOnClickListener(new View.OnClickListener() {

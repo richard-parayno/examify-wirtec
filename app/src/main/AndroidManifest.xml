@@ -47,7 +47,9 @@
         <activity android:name=".GameActivity.GameActivity3" />
         <activity android:name=".GameActivity.GameActivity4" />
         <activity android:name=".GameActivity.GameActivity5" />
-        <activity android:name=".ModeSelectActivity.ModeSelectActivity"></activity>
+        <activity android:name=".ModeSelectActivity.ModeSelectActivity" />
+        <activity android:name=".VersusActivity.VersusActivity" />
+        <activity android:name=".ResultActivity.ResultActivity"></activity>
     </application>
 
 </manifest>
