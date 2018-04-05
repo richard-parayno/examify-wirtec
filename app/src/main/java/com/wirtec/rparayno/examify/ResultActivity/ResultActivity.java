@@ -24,6 +24,13 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         removeTitleBar();
         initResources();
+
+        Bundle scoreBundle = getIntent().getExtras();
+
+        int x = scoreBundle.getInt("scoreCounter");
+
+        gameStatus.setText("Score: " + x);
+
     }
 
     private void removeTitleBar() {

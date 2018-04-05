@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
 import com.wirtec.rparayno.examify.R;
+import com.wirtec.rparayno.examify.ResultActivity.ResultActivity;
 
 import org.w3c.dom.Text;
 
@@ -71,14 +72,14 @@ public class GameActivity5 extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity5.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
@@ -92,14 +93,14 @@ public class GameActivity5 extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
@@ -113,14 +114,14 @@ public class GameActivity5 extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
@@ -134,14 +135,14 @@ public class GameActivity5 extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
-                    Intent game4 = new Intent(GameActivity4.this, GameActivity5.class);
+                    Intent game4 = new Intent(GameActivity5.this, ResultActivity.class);
                     game4.putExtras(scoreBundle);
                     startActivity(game4);
                 }
