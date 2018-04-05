@@ -69,6 +69,7 @@ public class ClassActivity extends AppCompatActivity {
                     Log.d("TopicNameSize:", mTopic.getTopicName());
                     ClassCard topicCard = new ClassCard(mTopic.getTopicName(), 1);
                     topicList.add(topicCard);
+                    cAdapter.notifyDataSetChanged();
                 }
             }
 

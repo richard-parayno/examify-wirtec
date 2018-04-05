@@ -99,7 +99,6 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 Intent selectedClass = new Intent(getActivity(), SettingActivity.class);
-                startActivity(selectedClass);
                 Bundle classBundle = new Bundle();
                 selectedClass.putExtras(classBundle);
 
