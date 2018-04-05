@@ -1,5 +1,6 @@
 package com.wirtec.rparayno.examify.ClassFragment;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,14 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
     public void onBindViewHolder(ClassViewHolder holder, int position) {
         ClassCard classCard = classList.get(position);
         holder.tv_class.setText(classCard.getClassName());
+
+        // switch for classes
+        switch (classList.get(position).getClassName()) {
+            case "GREATWK":
+                holder.tv_class.setTextColor(Color.WHITE);
+                holder.thumbnail.setImageResource(R.drawable.greatwk);
+                break;
+        }
 
     }
 

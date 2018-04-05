@@ -1,6 +1,8 @@
 package com.wirtec.rparayno.examify.ClassActivity;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,16 @@ public class ClassAdapter2 extends RecyclerView.Adapter<ClassAdapter2.ClassViewH
     public void onBindViewHolder(ClassViewHolder holder, int position) {
         ClassCard classCard = classList.get(position);
         holder.tv_class.setText(classCard.getClassName());
+        Log.d("CURRENT NAME: ", classList.get(0).getClassName());
+
+        // switch for classes
+        switch (classList.get(position).getClassName()) {
+            case "V for Vendetta":
+                holder.tv_class.setTextColor(Color.WHITE);
+                holder.thumbnail.setImageResource(R.drawable.vforvendetta);
+                break;
+        }
+
 
     }
 
