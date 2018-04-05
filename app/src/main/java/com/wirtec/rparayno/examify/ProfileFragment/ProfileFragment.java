@@ -62,10 +62,11 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile2, container, false);
         Bundle bundle = getArguments();
 
         TextView userName = view.findViewById(R.id.userName);
+        TextView currentUserRank = view.findViewById(R.id.currentUserRank);
 
         //CircularImageView userImage = view.findViewById(R.id.userImage);
 
@@ -74,7 +75,12 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
         Log.d("STATUS", "curr size: " + getArguments().size());
         userName.setText(bundle.getString("first_name"));
+        currentUserRank.setText("Librarian");
+        ProfilePictureView userImage = (ProfilePictureView) view.findViewById(R.id.userImage);
+        userImage.setProfileId(bundle.getString("id"));
 
+
+        /**
         profileList = new ArrayList<>();
 
         prepareDummy();
@@ -92,6 +98,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         Log.d("STATUS", "adapter init");
         pAdapter.notifyDataSetChanged();
         Log.d("STATUS", "data set notified");
+        **/
 
         //settings
         settingsButton = (ImageButton) view.findViewById(R.id.settingsButton);
@@ -105,6 +112,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
                 startActivityForResult(selectedClass, ENTER_SETTING_CODE);
             }
         });
+
 
 
 
