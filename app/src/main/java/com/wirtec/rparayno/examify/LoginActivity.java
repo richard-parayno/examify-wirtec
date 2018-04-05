@@ -171,21 +171,6 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-    private void showExplanation(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ActivityCompat.requestPermissions(LoginActivity.this,
-                                new String[]{Manifest.permission.INTERNET},
-                                REQUEST_CODE_INTERNET);
-                    }
-                });
-        builder.create().show();
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

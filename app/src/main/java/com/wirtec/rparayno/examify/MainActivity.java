@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
     private void initResources() {
 
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.nav_classes);
 
         final Bundle oldBundle = getIntent().getExtras();
         Log.d("STATUS", "pre-argument bundle size: " + oldBundle.size());
