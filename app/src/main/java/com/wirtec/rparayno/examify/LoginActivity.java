@@ -82,20 +82,7 @@ public class LoginActivity extends AppCompatActivity{
         removeTitleBar();
         // check login
         boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
-        // request permissions
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
-                showExplanation("Need Permission", "We need access to your storage so I can play your music!");
-
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, REQUEST_CODE_INTERNET);
-
-            }
-
-        } else {
-            // Permission has already been granted
-        }
         //initialize resources
         initResources();
         loginWithFacebook();

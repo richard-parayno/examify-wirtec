@@ -13,9 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
+import com.facebook.login.widget.ProfilePictureView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 import com.wirtec.rparayno.examify.ClassActivity.ClassActivity;
@@ -65,9 +67,9 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
         TextView userName = view.findViewById(R.id.userName);
 
-        CircularImageView userImage = view.findViewById(R.id.userImage);
+        //CircularImageView userImage = view.findViewById(R.id.userImage);
 
-        Picasso.with(getContext()).load("http://graph.facebook.com/" + bundle.getString("id") + "/picture");
+        //Picasso.with(getContext()).load("http://graph.facebook.com/" + bundle.getString("id") + "/picture");
 
 
         Log.d("STATUS", "curr size: " + getArguments().size());
@@ -78,7 +80,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         prepareDummy();
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(pAdapter = new ProfileAdapter(profileList, new ViewClickListener() {
+        recyclerView.setAdapter(pAdapter = new ProfileAdapter(bundle.getString("id"), profileList, new ViewClickListener() {
             @Override
             public void onViewClick(View v, int position) {
 
@@ -104,6 +106,8 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
                 startActivityForResult(selectedClass, ENTER_SETTING_CODE);
             }
         });
+
+
 
         return view;
     }

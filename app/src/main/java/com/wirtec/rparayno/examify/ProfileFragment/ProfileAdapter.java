@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.login.widget.ProfilePictureView;
 import com.wirtec.rparayno.examify.ClassFragment.ClassCard;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
@@ -22,13 +23,15 @@ import java.util.ArrayList;
 public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<ProfileCard> profileList;
     private ViewClickListener listener;
+    private String userID;
 
     private final static int PROFILE_CARD_MAIN = 0;
     private final static int PROFILE_CARD_SUB = 1;
 
-    public ProfileAdapter(ArrayList<ProfileCard> profileList, ViewClickListener listener) {
+    public ProfileAdapter(String userID, ArrayList<ProfileCard> profileList, ViewClickListener listener) {
         this.profileList = profileList;
         this.listener = listener;
+        this.userID = userID;
     }
 
 
@@ -37,12 +40,14 @@ public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         private TextView bestClass;
         private TextView lastOnline;
         private TextView medals;
+        private ProfilePictureView userImage;
 
         public ProfileViewHolder(View itemView) {
             super(itemView);
             bestClass = (TextView) itemView.findViewById(R.id.input_bestClass);
             lastOnline = (TextView) itemView.findViewById(R.id.input_lastOnline);
             medals = (TextView) itemView.findViewById(R.id.input_medals);
+            userImage = (ProfilePictureView) itemView.findViewById(R.id.userImage);
             Log.d("STATUS", "pasok1");
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +94,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 holder0.bestClass.setText(profileCard.getBestClass());
                 holder0.lastOnline.setText(profileCard.getLastOnline());
                 holder0.medals.setText(Integer.toString(profileCard.getMedals()));
+                holder0.userImage.setProfileId(this.userID);
                 break;
 
             case 1:
