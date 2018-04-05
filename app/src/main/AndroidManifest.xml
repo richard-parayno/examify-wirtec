@@ -42,7 +42,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity.GameActivity"></activity>
+        <activity android:name=".GameActivity.GameActivity" />
+        <activity android:name=".ModeSelectActivity.ModeSelectActivity"></activity>
     </application>
 
 </manifest>
