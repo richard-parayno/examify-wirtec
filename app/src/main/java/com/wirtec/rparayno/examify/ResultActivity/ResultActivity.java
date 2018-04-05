@@ -66,6 +66,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void initResources() {
         currentUserImage = (ProfilePictureView) findViewById(R.id.currentUserImage);
+        currentUserImage.setProfileId("10210485963095406");
 
         currentUserName = (TextView) findViewById(R.id.currentUserName);
         currentUserRank = (TextView) findViewById(R.id.currentUserRank);
@@ -83,5 +84,6 @@ public class ResultActivity extends AppCompatActivity {
                 startActivity(homeIntent);
             }
         });
+
     }
 }

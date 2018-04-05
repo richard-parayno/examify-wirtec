@@ -212,12 +212,12 @@ public class GameActivity4 extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_class);
+        setContentView(R.layout.activity_game);
+
     }
 
     private void initResources(){
 
-        setContentView(R.layout.activity_game);
 
         timeLeft = (TextView) findViewById(R.id.timeLeft);
         currentUserScore = (TextView) findViewById(R.id.currentUserScore);
