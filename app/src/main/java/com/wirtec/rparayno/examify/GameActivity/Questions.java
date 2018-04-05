@@ -6,16 +6,21 @@ package com.wirtec.rparayno.examify.GameActivity;
 
 public class Questions {
 
-    private String answer, choice_1, choice_2, choice_3, choice_4, qNumber, qText;
+    private String answer, choice_1, choice_2, choice_3, choice_4, qText;
+    private Long qNumber;
 
-    public Questions(String answer, String choice_1, String choice_2, String choice_3, String choice_4, String qNumber, String qText) {
+    public Questions(){
+
+    }
+
+    public Questions(String answer, String choice_1, String choice_2, String choice_3, String choice_4, String qText, Long qNumber) {
         this.answer = answer;
         this.choice_1 = choice_1;
         this.choice_2 = choice_2;
         this.choice_3 = choice_3;
         this.choice_4 = choice_4;
-        this.qNumber = qNumber;
         this.qText = qText;
+        this.qNumber = qNumber;
     }
 
     public String getAnswer() {
@@ -58,19 +63,19 @@ public class Questions {
         this.choice_4 = choice_4;
     }
 
-    public String getqNumber() {
-        return qNumber;
-    }
-
-    public void setqNumber(String qNumber) {
-        this.qNumber = qNumber;
-    }
-
     public String getqText() {
         return qText;
     }
 
     public void setqText(String qText) {
         this.qText = qText;
+    }
+
+    public Long getqNumber() {
+        return qNumber;
+    }
+
+    public void setqNumber(Long qNumber) {
+        this.qNumber = qNumber;
     }
 }
