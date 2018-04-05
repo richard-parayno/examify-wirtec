@@ -222,7 +222,6 @@ public class GameActivity extends AppCompatActivity {
         LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         animationView.setAnimation(R.raw.gametimer);
         animationView.setScale((float) 2.0);
-        animationView.loop(true);
         animationView.playAnimation();
 
 
