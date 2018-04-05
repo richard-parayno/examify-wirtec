@@ -45,6 +45,8 @@ public class ClassActivity extends AppCompatActivity {
 
     private static final String SELECTED_TOPIC_KEY = "topicName";
 
+    String fn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +100,10 @@ public class ClassActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         topicList = new ArrayList<>();
+
+        Bundle nameBundle = getIntent().getExtras();
+        fn = nameBundle.getString("first_name");
+
         cAdapter = new ClassAdapter2(topicList, new ViewClickListener() {
 
             @Override
@@ -109,6 +115,7 @@ public class ClassActivity extends AppCompatActivity {
 
                 Bundle classBundle = new Bundle();
                 classBundle.putString(SELECTED_TOPIC_KEY, topicList.get(position).getClassName());
+                classBundle.putString("first_name", fn);
                 selectedTopic.putExtras(classBundle);
 
                 selectedTopic.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);

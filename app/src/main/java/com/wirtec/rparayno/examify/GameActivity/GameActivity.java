@@ -46,6 +46,10 @@ public class GameActivity extends AppCompatActivity {
 
     private String qAnswer = "";
 
+    private Bundle nameBundle;
+
+    private String fn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,10 @@ public class GameActivity extends AppCompatActivity {
 
         getQuestionInfo();
 
+        nameBundle = getIntent().getExtras();
+
+        fn = nameBundle.getString("first_name");
+
         currentUserScore.setText("Score: " + scoreCounter);
 
         choice1Btn.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +73,7 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -72,6 +81,7 @@ public class GameActivity extends AppCompatActivity {
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -86,6 +96,7 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -93,6 +104,7 @@ public class GameActivity extends AppCompatActivity {
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -107,6 +119,7 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -114,6 +127,7 @@ public class GameActivity extends AppCompatActivity {
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -128,6 +142,7 @@ public class GameActivity extends AppCompatActivity {
                     scoreCounter += 10;
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -135,6 +150,7 @@ public class GameActivity extends AppCompatActivity {
                 else{
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
+                    scoreBundle.putString("first_name", fn);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
