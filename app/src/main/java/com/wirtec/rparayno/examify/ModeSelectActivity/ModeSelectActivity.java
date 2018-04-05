@@ -34,7 +34,7 @@ public class ModeSelectActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseTopics;
     private ArrayList<String> mModeList = new ArrayList<>();
 
-    private String classPressed = "";
+    private String modeSelect = "";
     private Bundle bundle;
 
     private static final int SELECTED_MODE_CODE = 1;
@@ -45,7 +45,7 @@ public class ModeSelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeTitleBar();
-
+        initResources();
     }
 
     private void removeTitleBar() {
