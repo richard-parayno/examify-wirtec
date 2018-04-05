@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -232,6 +234,11 @@ public class GameActivity extends AppCompatActivity {
 
         /* Log.d("className:", className);
         Log.d("topicName:", topicName); */
+
+        LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
+        animationView.setAnimation(R.raw.gametimer);
+        animationView.setScale((float) 2.0);
+        animationView.playAnimation();
 
 
     }
