@@ -30,7 +30,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private int x;
 
-    private String name;
+    private String name, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class ResultActivity extends AppCompatActivity {
 
         name = scoreBundle.getString("first_name");
         x = scoreBundle.getInt("scoreCounter");
+        id = scoreBundle.getString("id");
 
         currentUserName.setText(name);
         currentUserScore.setText("Score: " + x);
@@ -66,7 +67,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void initResources() {
         currentUserImage = (ProfilePictureView) findViewById(R.id.currentUserImage);
-        currentUserImage.setProfileId("10210485963095406");
+        currentUserImage.setProfileId(id);
 
         currentUserName = (TextView) findViewById(R.id.currentUserName);
         currentUserRank = (TextView) findViewById(R.id.currentUserRank);
@@ -79,6 +80,8 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle passBack = new Bundle();
                 passBack.putString("first_name", name);
+                passBack.putString("link", id);
+
                 Intent homeIntent = new Intent(ResultActivity.this, MainActivity.class);
                 homeIntent.putExtras(passBack);
                 startActivity(homeIntent);

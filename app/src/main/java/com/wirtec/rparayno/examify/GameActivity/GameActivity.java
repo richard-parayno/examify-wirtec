@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
 
     private Bundle nameBundle;
 
-    private String fn;
+    private String fn, link, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,10 @@ public class GameActivity extends AppCompatActivity {
         nameBundle = getIntent().getExtras();
 
         fn = nameBundle.getString("first_name");
+        link = nameBundle.getString("link");
+        id = nameBundle.getString("id");
+
+        Log.d("fbId:", id);
 
         currentUserScore.setText("Score: " + scoreCounter);
 
@@ -76,6 +80,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -84,6 +90,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -99,6 +107,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -107,6 +117,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -122,6 +134,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -130,6 +144,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -145,6 +161,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);
@@ -153,6 +171,8 @@ public class GameActivity extends AppCompatActivity {
                     Bundle scoreBundle = new Bundle();
                     scoreBundle.putInt("scoreCounter", scoreCounter);
                     scoreBundle.putString("first_name", fn);
+                    scoreBundle.putString("link", link);
+                    scoreBundle.putString("id", id);
                     Intent game2 = new Intent(GameActivity.this, GameActivity2.class);
                     game2.putExtras(scoreBundle);
                     startActivity(game2);

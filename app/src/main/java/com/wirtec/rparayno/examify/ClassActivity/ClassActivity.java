@@ -45,7 +45,7 @@ public class ClassActivity extends AppCompatActivity {
 
     private static final String SELECTED_TOPIC_KEY = "topicName";
 
-    String fn;
+    String fn, link, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +103,8 @@ public class ClassActivity extends AppCompatActivity {
 
         Bundle nameBundle = getIntent().getExtras();
         fn = nameBundle.getString("first_name");
+        link = nameBundle.getString("link");
+        id = nameBundle.getString("id");
 
         cAdapter = new ClassAdapter2(topicList, new ViewClickListener() {
 
@@ -116,6 +118,9 @@ public class ClassActivity extends AppCompatActivity {
                 Bundle classBundle = new Bundle();
                 classBundle.putString(SELECTED_TOPIC_KEY, topicList.get(position).getClassName());
                 classBundle.putString("first_name", fn);
+                classBundle.putString("link", link);
+                classBundle.putString("id", id);
+
                 selectedTopic.putExtras(classBundle);
 
                 selectedTopic.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);

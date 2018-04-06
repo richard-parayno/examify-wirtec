@@ -48,7 +48,7 @@ public class ClassFragment extends android.support.v4.app.Fragment {
     private DatabaseReference mDatabaseCourses;
     private ArrayList<String> mClassList = new ArrayList<>();
 
-    String fn;
+    String fn, link, id;
 
     public ClassFragment() {
         // Required empty public constructor
@@ -112,6 +112,8 @@ public class ClassFragment extends android.support.v4.app.Fragment {
         recyclerView.setLayoutManager(cLayoutManager);
 
         fn = bundle.getString("first_name");
+        link = bundle.getString("link");
+        id = bundle.getString("id");
 
         cAdapter = new ClassAdapter(classList, new ViewClickListener() {
             @Override
@@ -122,6 +124,8 @@ public class ClassFragment extends android.support.v4.app.Fragment {
                 Bundle classBundle = new Bundle();
                 classBundle.putString(SELECTED_CLASS_KEY, classList.get(position).getClassName());
                 classBundle.putString("first_name", fn);
+                classBundle.putString("link", link);
+                classBundle.putString("id", id);
 
                 selectedClass.putExtras(classBundle);
 
