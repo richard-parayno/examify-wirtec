@@ -4,10 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.facebook.login.widget.ProfilePictureView;
 import com.wirtec.rparayno.examify.R;
 import com.wirtec.rparayno.examify.ViewClickListener;
 
@@ -29,14 +29,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     public class FeedViewHolder extends RecyclerView.ViewHolder {
         public TextView card_username;
         public TextView card_status;
-        public ImageView card_thumbnail;
+        public ProfilePictureView fbId;
         public TextView card_content;
 
 
         public FeedViewHolder(View view) {
             super(view);
             card_username = (TextView) view.findViewById(R.id.card_name);
-            card_thumbnail = (ImageView) view.findViewById(R.id.card_thumbnail);
+            fbId = (ProfilePictureView) view.findViewById(R.id.userImage);
             card_status = (TextView) view.findViewById(R.id.card_status);
             card_content = (TextView) view.findViewById(R.id.card_content);
 
@@ -64,6 +64,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         holder.card_username.setText(feedCard.getUsername());
         holder.card_status.setText(feedCard.getUserstatus());
         holder.card_content.setText(feedCard.getContent());
+        holder.fbId.setProfileId(feedCard.getThumbnail());
 
 
     }

@@ -120,20 +120,11 @@ public class FeedFragment extends android.support.v4.app.Fragment {
     }
 
     private void prepareDummy() {
-        FeedCard feedCard = new FeedCard("Richard Parayno", "Online: Now", "Hello!", 1);
+        Bundle bundle = getArguments();
+
+        FeedCard feedCard = new FeedCard(bundle.getString("first_name"), "Last Class: GREATWK", "Hello!", bundle.getString("id"));
         feedList.add(feedCard);
 
-        feedCard = new FeedCard("Richard Parayno", "Online: Now", "Hello!", 1);
-        feedList.add(feedCard);
-
-        feedCard = new FeedCard("Richard Parayno", "Online: Now", "Hello!", 1);
-        feedList.add(feedCard);
-
-        feedCard = new FeedCard("Richard Parayno", "Online: Now", "Hello!", 1);
-        feedList.add(feedCard);
-
-        feedCard = new FeedCard("Richard Parayno", "Online: Now", "Hello!", 1);
-        feedList.add(feedCard);
 
         fAdapter.notifyDataSetChanged();
     }

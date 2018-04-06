@@ -121,6 +121,32 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout3"
             app:layout_constraintVertical_bias="0.060000002" />
+
+        <TextView
+            android:id="@+id/currentUserHighestScore"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="32dp"
+            android:text="Highest Score Attained"
+            android:textColor="@android:color/white"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentUserRank" />
+
+        <TextView
+            android:id="@+id/currentUserBestClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Best Class"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentUserHighestScore"
+            app:layout_constraintVertical_bias="0.133" />
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

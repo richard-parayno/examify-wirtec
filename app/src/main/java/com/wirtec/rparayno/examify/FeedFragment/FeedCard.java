@@ -6,16 +6,16 @@ package com.wirtec.rparayno.examify.FeedFragment;
 
 public class FeedCard {
     private String username;
-    private int thumbnail;
+    private String fbId;
     private String userstatus;
     private String content;
 
 
-    public FeedCard(String username, String userstatus, String content, int thumbnail) {
+    public FeedCard(String username, String userstatus, String content, String fbId) {
         this.username = username;
         this.userstatus = userstatus;
         this.content = content;
-        this.thumbnail = thumbnail;
+        this.fbId = fbId;
     }
 
     public String getUsername() {
@@ -26,12 +26,12 @@ public class FeedCard {
         this.username = username;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public String getThumbnail() {
+        return fbId;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setThumbnail(String thumbnail) {
+        this.fbId = thumbnail;
     }
 
     public String getUserstatus() {
