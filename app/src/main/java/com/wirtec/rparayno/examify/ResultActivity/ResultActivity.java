@@ -36,26 +36,28 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeTitleBar();
+        intentChecker();
         initResources();
+        pushToDB();
 
+    }
+
+    private void intentChecker() {
         Bundle scoreBundle = getIntent().getExtras();
 
         name = scoreBundle.getString("first_name");
         x = scoreBundle.getInt("scoreCounter");
         id = scoreBundle.getString("id");
 
-        currentUserName.setText(name);
-        currentUserScore.setText("Score: " + x);
-        gameStatus.setText("Game Completed!");
-        currentUserRank.setText("Royal Inquisitor");
+    }
 
+    private void pushToDB() {
         Date currentTime = Calendar.getInstance().getTime();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRef = database.getReference().child("Scores").child(name);
         mRef.child("Score").push().setValue(x);
         mRef.child("Score").push().setValue(currentTime);
-
     }
 
     private void removeTitleBar() {
@@ -87,6 +89,11 @@ public class ResultActivity extends AppCompatActivity {
                 startActivity(homeIntent);
             }
         });
+
+        currentUserName.setText(name);
+        currentUserScore.setText("Score: " + x);
+        gameStatus.setText("Game Completed!");
+        currentUserRank.setText("Royal Inquisitor");
 
     }
 }

@@ -75,7 +75,6 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
         Log.d("STATUS", "curr size: " + getArguments().size());
         userName.setText(bundle.getString("first_name"));
-        currentUserRank.setText("Librarian");
         ProfilePictureView userImage = (ProfilePictureView) view.findViewById(R.id.userImage);
         userImage.setProfileId(bundle.getString("id"));
 

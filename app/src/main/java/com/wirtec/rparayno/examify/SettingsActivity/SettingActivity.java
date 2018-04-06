@@ -50,13 +50,17 @@ public class SettingActivity extends AppCompatActivity {
         //ArrayAdapter adapter = new ArrayAdapter<String>(this,
         //        R.layout.listview_setting, settingsArray);
 
-        //tester adapter
+        /*tester adapter
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.listview_setting, testerSettings);
+        */
+        //live adapter
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.listview_setting, settingsArray);
+
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-        //tester
+        /* tester settings
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -76,19 +80,22 @@ public class SettingActivity extends AppCompatActivity {
                 }
             }
         });
+        */
 
-
-        fbLogoutBtn = (Button) findViewById(R.id.fb_LogoutBtn);
-        fbLogoutBtn.setOnClickListener(new View.OnClickListener() {
+        // live listener
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                LoginManager.getInstance().logOut();
-                Intent logoutIntent = new Intent(SettingActivity.this, LoginActivity.class);
-                startActivity(logoutIntent);
-                finish();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (settingsArray[position]) {
+                    case "Logout":
+                        LoginManager.getInstance().logOut();
+                        Intent logoutIntent = new Intent(SettingActivity.this, LoginActivity.class);
+                        startActivity(logoutIntent);
+                        finish();
+                        break;
+                }
             }
         });
-
 
         backButton = (ImageButton) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
